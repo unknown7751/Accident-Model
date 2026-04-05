@@ -1,7 +1,8 @@
-import requests
 import os
 import sys
 from pathlib import Path
+
+import requests
 
 BASE_URL = "http://localhost:5000"
 
@@ -16,7 +17,7 @@ def print_result(test_name, response):
             label = data.get("label", "N/A")
             prob  = data.get("accident_probability", "N/A")
             pred  = data.get("prediction")
-            icon  = "🚨" if pred == 1 else "✅"
+            icon  = "🚨" if pred == 0 else "✅"
             print(f"   Result      : {icon} {label} (accident_prob={prob})")
     except Exception:
         print(f"   Raw Response: {response.text}")

@@ -45,7 +45,7 @@ def predict(image_bytes):
     with torch.no_grad():
         probs = torch.softmax(model(tensor), dim=1)
         accident_prob = probs[0, 0].item()
-    prediction = 1 if accident_prob >= THRESHOLD else 0
+    prediction = 0 if accident_prob >= THRESHOLD else 1
     return prediction, accident_prob
 
 @app.route("/predict", methods=["POST"])
